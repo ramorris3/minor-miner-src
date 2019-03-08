@@ -72,6 +72,9 @@ MinerGame.menuState.prototype = {
         this.game.camera.fade(0x000000, 250);
         MinerGame.currentTrack = null;
         MinerGame.newLevel = true;
+        MinerGame.deaths = 0;
+        MinerGame.totalTime = 0;
+        MinerGame.normalModeTime = 0;
         MinerGame.hardModeTime = 0;
         MinerGame.hardModeDeaths = 0;
         // CHANGE FOR DEBUGGING/TESTING LEVELS //

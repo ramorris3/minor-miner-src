@@ -76,6 +76,6 @@ MinerGame.preloadState.prototype = {
   },
   create: function() {
     this.state.start('menu');
-    // this.state.start('finale');
+    // this.state.start('victory');
   }
 };

@@ -12,7 +12,7 @@ MinerGame.thanksState.prototype = {
     // credits
     var startY = 100;
     var interval = 20;
-    var credits = ['Code, design, and SFx', 'Alex Morris * @ramorris_3\n', 'Tile and character art', 'Luis Zuno * @ansimuz', 'soundtrack', 'Eric Skiff * @ericskiff', 'Made with Phaser.js by @photonstorm'];
+    var credits = ['Code, design, and SFx by', 'Alex Morris\n', 'Tile and character art by', 'Luis Zuno', 'soundtrack by', 'Eric Skiff', 'Made with Phaserjs by Richard Davey'];
 
     for (var i = 0; i < credits.length; i++) {
       if (i % 2 == 0) {

@@ -84,7 +84,7 @@ MinerGame.finaleState.prototype.create = function() {
   this.lineClock = 0;
   this.lineTimer = 0;
   this.currLineIndex = 0;
-  this.lines = ['Why would you do this to me?', 'I thought we were going\n\nto grow old together.', '</3 </3 </3'];
+  this.lines = ['Why would you do this to me?', 'I thought we were going\n\nto grow old together.'];
   this.currLine = this.lines[0];
   this.drawText = true;
 };
@@ -207,7 +207,7 @@ MinerGame.finaleState.prototype.explode = function() {
   this.startText.anchor.setTo(0.5, 1);
 
   // stats text
-  var stats = 'hard mode time: ' + MinerGame.hardModeTime + ' seconds\n\nhard mode Deaths: ' + MinerGame.hardModeDeaths + '\n\n\n\ntotal time: ' + (MinerGame.hardModeTime + MinerGame.totalTime).toString() + ' seconds\n\ntotal deaths: ' + (MinerGame.hardModeDeaths + MinerGame.deaths).toString();
+  var stats = 'hard mode time: ' + (MinerGame.hardModeTime - MinerGame.normalModeTime).toString() + ' seconds\n\nhard mode fails: ' + MinerGame.hardModeDeaths + '\n\n\n\ntotal time: ' + MinerGame.hardModeTime + ' seconds\n\ntotal fails: ' + (MinerGame.hardModeDeaths + MinerGame.deaths).toString();
   this.statText = this.game.add.bitmapText(this.game.world.centerX, 125, 'carrier_command', stats, 12);
   this.statText.anchor.setTo(0.5, 0.5);
 

@@ -149,7 +149,7 @@ MinerGame.victoryState.prototype.erupt = function() {
   } else if (crystalPercent === '100%') {
     MinerGame.hardMode = true;
   }
-  var stats = 'time: ' + MinerGame.totalTime + ' seconds\n\nDeaths: ' + MinerGame.deaths + '\n\nCrystals: ' + crystalPercent;
+  var stats = 'time: ' + MinerGame.normalModeTime + ' seconds\n\nFails: ' + MinerGame.deaths + '\n\nCrystals: ' + crystalPercent;
   this.statText = this.game.add.bitmapText(this.game.world.centerX, 125, 'carrier_command', stats, 12);
   this.statText.anchor.setTo(0.5, 0.5);
 

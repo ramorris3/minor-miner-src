@@ -72,7 +72,7 @@ MinerGame.upgradeState.prototype.update = function() {
       this.game.time.events.add(4000, function() {
         this.game.camera.fade(0x000000, 100);
         this.game.camera.onFadeComplete.addOnce(function() {
-          MinerGame.startTime = this.game.time.totalElapsedSeconds();
+          MinerGame.startTime = MinerGame.totalTime || this.game.time.totalElapsedSeconds();
           MinerGame.hardModeDeaths = 0;
           MinerGame.secrets = 0;
           MinerGame.level = '1 hard';

@@ -4,6 +4,8 @@ MinerGame.secrets = 0;
 MinerGame.totalSecrets = 153;
 MinerGame.startTime = MinerGame.startTime || 0;
 MinerGame.totalTime = 0;
+MinerGame.normalModeTime = 0;
+MinerGame.hardModeTime = 0;
 MinerGame.deaths = 0;
 MinerGame.hardModeDeaths = 0;
 
@@ -220,13 +222,28 @@ MinerGame.playState.prototype = {
     if (MinerGame.newLevel) {
       MinerGame.newLevel = false;
       if (MinerGame.level === '1') {
-        this.drawTutorialText(['WELCOME MINER!',
-        'My name is A5IM0V-pr1m3.', 'clearly, I am a robot.',
-        'I see that you are lost.',
-        'That was my doing...','You see, my plan is to\n\nlead you mindlessly from\n\nroom to room with those\n\ngreen portals until you\n\neither give up or die!', 'HAHAHAHAHA!!1!*!!!1!!\n\nso evil!!', '...',  'You *might* get out alive\n\nif you run with the arrow\n\nkeys and jump with \'x\'.', '...so fun...', 'Try not to die, you\n\nmiserable yellow\n\ncreature.', '<3']);
+        this.drawTutorialText([
+          'WELCOME MINER!',
+          'My name is A5IM0V-pr1m3.',
+          'clearly, I am a robot.',
+          'I see that you are lost...',
+          'and you\'ll never get out\n\nbecause I\'ve trapped you\n\nhere forever!!!!',
+          'hahahaha!!!1!!*!!1!\n\nSo evil!',
+          '(Run with the arrow keys.)',
+          '(Jump with \'x\'.)',
+          '(Wall-jump by pressing \'x\'\n\nwhile sliding on the wall.)',
+          '(Touch the green portal to\n\nmove to the next level.)'
+        ]);
       } else if (MinerGame.level === '1 hard') {
-        this.drawTutorialText(['Ugh! You disgust me, human.',
-        'But your tenacity is\n\nquite remarkable.', '...', 'I\'ve decided to keep\n\nyou as a pet!', 'A greasy, ugly,\n\nfascinating pet\n\nhuman.', 'Don\'t try to run\n\naway, biped.', 'You\'ll never make\n\nit out alive!!!1!', 'ahahahahaaha\n\nhahahahaheha\n\nshhnahf!!@!!\n\n@!@#!!#!', 'ha!']);
+        this.drawTutorialText([
+            'Ugh! You disgust me, human.',
+            'But your tenacity is quite\n\nremarkable.',
+            'I\'ve decided to keep you\n\nas a pet!',
+            'Don\'t try to run away, you\n\nmiserable creature.',
+            'You\'ll never make it out!',
+            'hahaha!',
+            '(The drill now has infinite battery.)'
+        ]);
       }
     }
   },
@@ -315,7 +332,7 @@ MinerGame.playState.prototype.playerPortalHandler = function(player, portal) {
       this.lavaSplash = null;
       this.transporting = false;
       if (MinerGame.level === 'end') {
-        MinerGame.totalTime = Math.floor(this.game.time.totalElapsedSeconds() - MinerGame.startTime);
+        MinerGame.normalModeTime = Math.floor(MinerGame.totalTime / 1000.0);
         this.game.state.start('victory');
       } else {
         this.game.state.start(this.game.state.current);
@@ -359,23 +376,23 @@ MinerGame.playState.prototype.playerTrapHandler = function(player, trap) {
     if (rand < 0.1) {
       text = 'HAHAHAHA';
     } else if (rand < 0.2) {
-      text = 'OUCHIE :[';
+      text = 'OUCHIE';
     } else if (rand < 0.3) {
-      text = 'Try again T.T';
+      text = 'Try again!';
     } else if (rand < 0.4){
-      text = 'You win! JK you died.';
+      text = 'You win! JK you failed.';
     } else if (rand < 0.5) {
       text = '*burp*';
     } else if (rand < 0.6) {
-      text = 'come on now :[';
+      text = 'come on now';
     } else if (rand < 0.7) {
       text = 'What is... feeling?';
     } else if (rand < 0.8) {
       text = 'Juicy';
     } else if (rand < 0.9) {
-      text = 'nice try, you got this <3';
+      text = 'nice try, you got this';
     } else {
-      text = 'You\'re breaking my <3';
+      text = 'You\'re breaking my heart';
     }
     this.deathText = this.game.add.bitmapText(this.game.camera.x + (this.game.camera.width / 2), this.game.camera.y + (this.game.camera.height / 2), 'carrier_command', text, 12);
     this.deathText.anchor.setTo(0.5, 0.5);
@@ -483,15 +500,13 @@ MinerGame.playState.prototype.playerPowerupHandler = function(player, powerup) {
   this.player.paused = true;
 
   // show drill tutorial
-  this.drawTutorialText(['wowee, You got the laser drill...', '>:[',
-  'I\'m so depresse--I mean happy\n\nyou made it this far.',
-  'OK, more advice.',
-  'Hold \'z\' to use the drill.\n\nBut be aware That it will \n\nrun out of charge if you\n\nuse it in air for too\n\nlong.',
-  'So touch the ground or drill\n\ngreen blocks to recharge it,\n\nand keep an eye on your\n\nbattery in the top-left, ok?',
-  'be careful!  It has the\n\nworst battery invented...\n\nReally, though.  It sucks.',
-  '...',
-  '>:D',
-  'So long, ugly humanoid!\n\nmay we never meet again!'
+  this.drawTutorialText([
+    'Wowee, You got the laser drill...',
+    'Im so depresse--I mean\n\nhappy you made it this far.',
+    'But you\'re still trapped,\n\nbecause that drill has the\n\nworst battery invented!!!',
+    '>:D',
+    '(Hold \'z\' to use the drill.)',
+    '(Touch the ground or drill\n\nthrough green blocks to\n\nrecharge its battery.)'
   ]);
 };
 
@@ -500,7 +515,7 @@ MinerGame.playState.prototype.playerRobotHandler = function(player, robot) {
   if (player.currentState != player.drillState) {
     return;
   }
-  MinerGame.hardModeTime = Math.floor(this.game.time.totalElapsedSeconds() - MinerGame.startTime);
+  MinerGame.hardModeTime = Math.floor(MinerGame.totalTime / 1000);
   this.game.state.start('finale');
 };
 
@@ -577,8 +592,10 @@ MinerGame.playState.prototype.updateSecretText = function(numSecrets) {
 };
 
 MinerGame.playState.prototype.updateTimerText = function() {
-  var time = Math.floor(this.game.time.totalElapsedSeconds() - MinerGame.startTime);
-  this.timerText.text = 'time: ' + time;
+  if (!this.drawTutText) {
+    MinerGame.totalTime += this.game.time.elapsed;
+  }
+  this.timerText.text = 'time: ' + Math.floor(MinerGame.totalTime / 1000);
 };
 
 MinerGame.playState.prototype.drawTutorialText = function(lines) {
