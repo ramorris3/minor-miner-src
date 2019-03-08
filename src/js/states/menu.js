@@ -60,6 +60,9 @@ MinerGame.menuState.prototype = {
       if (this.starting) {
         return;
       }
+      if (window.parent.cmgGameEvent) {
+        window.parent.cmgGameEvent('start');
+      }
       this.starting = true;
       music.stop();
       var startSound = this.add.audio('start_game');

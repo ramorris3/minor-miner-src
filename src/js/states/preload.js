@@ -51,6 +51,7 @@ MinerGame.preloadState.prototype = {
     this.load.spritesheet('battery', 'assets/img/battery.png', 36, 16);
     this.load.image('cloud-particle', 'assets/img/cloud-particle.png');
     this.load.spritesheet('robot', 'assets/img/robot.png', 24, 32);
+    this.load.image('splash-screen', 'assets/img/splash-screen.png');
 
 
     // load audio assets
@@ -75,7 +76,7 @@ MinerGame.preloadState.prototype = {
     this.load.audio('rumble', 'assets/audio/rumble.wav');
   },
   create: function() {
-    this.state.start('menu');
+    this.state.start('splash');
     // this.state.start('victory');
   }
 };

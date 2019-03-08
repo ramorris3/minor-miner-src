@@ -335,6 +335,9 @@ MinerGame.playState.prototype.playerPortalHandler = function(player, portal) {
         MinerGame.normalModeTime = Math.floor(MinerGame.totalTime / 1000.0);
         this.game.state.start('victory');
       } else {
+        if (window.parent.cmgGameEvent) {
+          window.parent.cmgGameEvent('start', MinerGame.level);
+        }
         this.game.state.start(this.game.state.current);
       }
     }, this);
