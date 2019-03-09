@@ -56,24 +56,24 @@ MinerGame.preloadState.prototype = {
 
     // load audio assets
     this.load.audio('intro', 'assets/audio/intro.mp3');
-    this.load.audio('start_game', 'assets/audio/start_game.wav');
+    this.load.audio('start_game', ['assets/audio/start_game.wav', 'assets/audio/start_game.mp3']);
     this.load.audio('field1', 'assets/audio/field1.mp3');
     this.load.audio('field2', 'assets/audio/field2.mp3');
-    this.load.audio('jump', 'assets/audio/jump.wav');
-    this.load.audio('player_die', 'assets/audio/player_die.wav');
-    this.load.audio('secret', 'assets/audio/secret.wav');
-    this.load.audio('footstep', 'assets/audio/footstep.wav');
-    this.load.audio('dust', 'assets/audio/dust.wav');
-    this.load.audio('spring', 'assets/audio/spring.wav');
-    this.load.audio('drill', 'assets/audio/drill.wav');
-    this.load.audio('drill-burst', 'assets/audio/drill_burst.wav');
-    this.load.audio('powerup', 'assets/audio/powerup.wav');
-    this.load.audio('blip', 'assets/audio/blip.wav');
-    this.load.audio('dead-drill', 'assets/audio/dead-drill.wav');
+    this.load.audio('jump', ['assets/audio/jump.wav', 'assets/audio/jump.mp3']);
+    this.load.audio('player_die', ['assets/audio/player_die.wav', 'assets/audio/player_die.mp3']);
+    this.load.audio('secret', ['assets/audio/secret.wav', 'assets/audio/secret.mp3']);
+    this.load.audio('footstep', ['assets/audio/footstep.wav', 'assets/audio/footstep.mp3']);
+    this.load.audio('dust', ['assets/audio/dust.wav', 'assets/audio/dust.mp3']);
+    this.load.audio('spring', ['assets/audio/spring.wav', 'assets/audio/spring.mp3']);
+    this.load.audio('drill', ['assets/audio/drill.wav', 'assets/audio/drill.mp3']);
+    this.load.audio('drill-burst', ['assets/audio/drill_burst.wav', 'assets/audio/drill_burst.mp3']);
+    this.load.audio('powerup', ['assets/audio/powerup.wav', 'assets/audio/powerup.mp3']);
+    this.load.audio('blip', ['assets/audio/blip.wav', 'assets/audio/blip.mp3']);
+    this.load.audio('dead-drill', ['assets/audio/dead-drill.wav', 'assets/audio/dead-drill.mp3']);
     this.load.audio('final-level', 'assets/audio/final-level.mp3');
     this.load.audio('victory', 'assets/audio/victory.mp3');
     this.load.audio('hard-mode', 'assets/audio/hard-mode.mp3');
-    this.load.audio('rumble', 'assets/audio/rumble.wav');
+    this.load.audio('rumble', ['assets/audio/rumble.wav', 'assets/audio/rumble.mp3']);
   },
   create: function() {
     this.state.start('splash');

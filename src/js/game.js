@@ -18,7 +18,7 @@ var allowedHosts = [
     'm.coolmathgames.com'
 ];
 
-if (allowedHosts.includes(window.location.host)) {
+if (allowedHosts.indexOf(window.location.host) !== -1) {
     // game def
     MinerGame.game = new Phaser.Game(640, 480, Phaser.AUTO, '', null, false, false);
 
