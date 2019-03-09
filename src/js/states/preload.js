@@ -77,6 +77,6 @@ MinerGame.preloadState.prototype = {
   },
   create: function() {
     this.state.start('splash');
-    // this.state.start('victory');
+    // this.state.start('upgrade');
   }
 };

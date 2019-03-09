@@ -3,7 +3,7 @@ var MinerGame = MinerGame || {};
 
 // site-lock
 var allowedHosts = [
-    'localhost:3000',
+    // 'localhost:3000',
     'www.coolmath-games.com',
     'edit.coolmath-games.com',
     'www.stage.coolmath-games.com',

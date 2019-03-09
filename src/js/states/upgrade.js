@@ -48,12 +48,13 @@ MinerGame.upgradeState.prototype.update = function() {
       this.player.pendingDestroy = true;
       var speedo = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'player-speedo')
       speedo.anchor.setTo(0.5, 0.5);
+      // console.log(speedo.frame);
       speedo.frame = 6;
 
       // play music and audio
       this.upgradedSound.play();
       MinerGame.currentTrack = this.game.add.audio('hard-mode');
-      MinerGame.currentTrack.volume -= 2;
+      // MinerGame.currentTrack.volume -= 2;
       MinerGame.currentTrack.loopFull();
 
       // add hard-mode text
