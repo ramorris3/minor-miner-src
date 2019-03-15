@@ -6,7 +6,7 @@ var gulpIf = require('gulp-if');
 var uglify = require('gulp-uglify');
 
 gulp.task('clean', function() {
-    return del.sync('dist');
+    return del.sync(['dist/*', '!dist/.git']);
 });
 
 gulp.task('favicon', ['clean'], function() {

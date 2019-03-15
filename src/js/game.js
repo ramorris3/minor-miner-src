@@ -3,22 +3,10 @@ var MinerGame = MinerGame || {};
 
 // site-lock
 var allowedHosts = [
-    // 'localhost:3000',
-    'www.coolmath-games.com',
-    'edit.coolmath-games.com',
-    'www.stage.coolmath-games.com',
-    'edit-stage.coolmath-games.com',
-    'dev.coolmath-games.com',
-    'm.coolmath-games.com',
-    'www.coolmathgames.com',
-    'edit.coolmathgames.com',
-    'www.stage.coolmathgames.com',
-    'edit-stage.coolmathgames.com',
-    'dev.coolmathgames.com',
-    'm.coolmathgames.com'
+    'ramorris3.github.io'
 ];
 
-if (allowedHosts.indexOf(window.location.host) !== -1) {
+if (allowedHosts.indexOf(window.parent.location.host) !== -1) {
     // game def
     MinerGame.game = new Phaser.Game(640, 480, Phaser.AUTO, '', null, false, false);
 

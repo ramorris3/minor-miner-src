@@ -76,7 +76,6 @@ MinerGame.preloadState.prototype = {
     this.load.audio('rumble', ['assets/audio/rumble.wav', 'assets/audio/rumble.mp3']);
   },
   create: function() {
-    this.state.start('splash');
-    // this.state.start('upgrade');
+    this.state.start('menu');
   }
 };
