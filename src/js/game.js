@@ -2,11 +2,11 @@
 var MinerGame = MinerGame || {};
 
 // site-lock
-var allowedHosts = [
+var a = [
     'ramorris3.github.io'
 ];
 
-if (allowedHosts.indexOf(window.parent.location.host) !== -1) {
+if (a.indexOf(window.parent.location.host) !== -1) {
     // game def
     MinerGame.game = new Phaser.Game(640, 480, Phaser.AUTO, '', null, false, false);
 
