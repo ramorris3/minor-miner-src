@@ -5,31 +5,36 @@ var useref = require('gulp-useref');
 var gulpIf = require('gulp-if');
 var uglify = require('gulp-uglify');
 
-gulp.task('clean', function() {
-    return del.sync(['dist/*', '!dist/.git']);
+gulp.task('clean', function(done) {
+    del.sync(['dist/*', '!dist/.git']);
+    done();
 });
 
-gulp.task('favicon', ['clean'], function() {
-    return gulp.src('src/favicon.ico')
+gulp.task('favicon', function(done) {
+    gulp.src('src/favicon.ico')
         .pipe(gulp.dest('dist'));
+    done();
 });
 
-gulp.task('images', ['clean'], function() {
-    return gulp.src('src/assets/img/*.png')
+gulp.task('images', function(done) {
+    gulp.src('src/assets/img/*.png')
         .pipe(imagemin())
         .pipe(gulp.dest('dist/assets/img'));
+    done();
 });
 
-gulp.task('assets', ['clean'], function() {
-    return gulp.src('src/assets/!(img)**/*')
+gulp.task('assets', function(done) {
+    gulp.src('src/assets/!(img)**/*')
         .pipe(gulp.dest('dist/assets'));
+    done();
 });
 
-gulp.task('compile', ['clean'], function () {
-    return gulp.src(['src/*.html'])
+gulp.task('compile', function (done) {
+    gulp.src(['src/*.html'])
         .pipe(useref('app.min.js'))
         .pipe(gulpIf('*.js', uglify({ mangle: true })))
         .pipe(gulp.dest('dist'));
+    done();
 });
 
-gulp.task('default', ['clean', 'favicon', 'images', 'assets', 'compile']);
+gulp.task('default', gulp.series('clean', 'favicon', 'images', 'assets', 'compile'));
